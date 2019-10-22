@@ -3,8 +3,8 @@ package com.df.core;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -37,9 +37,19 @@ public class FileFilterHelper3 {
 //        }
 
 
+        String path = FileFilterHelper3.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        if (path.endsWith(".jar")) {
+            path = path.substring(0, path.lastIndexOf("/") + 1);
+            System.out.println(path);
+        }
+
         List<String> keepFileList = new ArrayList<String>();
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(FileFilterHelper3.class.getResourceAsStream(DEFAULT_PATH)));
+        BufferedReader reader = new BufferedReader(new FileReader(path + DEFAULT_PATH));
+
+//        BufferedReader reader = new BufferedReader(new InputStreamReader(FileFilterHelper3.class.getResourceAsStream(path + DEFAULT_PATH)));
+
+
         String lineStr = null;
         while ((lineStr = reader.readLine()) != null) {
             int index = lineStr.lastIndexOf("src/main/java/");

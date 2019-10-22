@@ -31,9 +31,9 @@
                 <!--<include>**/*.xml</include>-->
                 <!--</includes>-->
                 <!--环境差异化文件在编译时排除，在外部独立配置，CLASSPATH中引入-->
-                <excludes>
-                    <exclude>*.conf</exclude>
-                </excludes>
+                <!--                <excludes>-->
+                <!--                    <exclude>*.conf</exclude>-->
+                <!--                </excludes>-->
                 <filtering>false</filtering>
             </resource>
         </resources>
