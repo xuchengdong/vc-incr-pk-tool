@@ -8,5 +8,34 @@
     <artifactId>file-filter</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
 
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <!--java目录下的文件默认编译只保留class文件，若包含其他类型文件需要编译到classes目录下需要使用include标签明确指定-->
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!--resources目录下的文件默认全部编译到classes目录下，若使用include标签指定，则所有需要保留的文件都要包含在include标签内，否则只保留指定的文件-->
+                <!--<includes>-->
+                <!--<include>**/*.xml</include>-->
+                <!--</includes>-->
+                <!--环境差异化文件在编译时排除，在外部独立配置，CLASSPATH中引入-->
+                <excludes>
+                    <exclude>*.conf</exclude>
+                </excludes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
 </project>
