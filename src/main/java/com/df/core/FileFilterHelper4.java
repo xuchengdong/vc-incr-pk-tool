@@ -67,7 +67,10 @@ public class FileFilterHelper4 {
             }
 
             lineStr = lineStr.replace("/", "\\");
-            keepFileList.add(lineStr);
+
+            if (!"".equals(lineStr.trim())) {
+                keepFileList.add(lineStr);
+            }
         }
 
         String appdirPath = args[0];
